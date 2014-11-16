@@ -9,6 +9,7 @@ Spree.config do |config|
   # Example:
   # Uncomment to stop tracking inventory levels in the application
   # config.track_inventory_levels = false
+  Devise.secret_key = ENV['DEVISE_SECRET_KEY']
 end
 
 Spree.user_class = "Spree::User"
