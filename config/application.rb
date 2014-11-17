@@ -8,7 +8,7 @@ Bundler.require(*Rails.groups)
 
 module BilletBullet
   class Application < Rails::Application
-    
+
     config.to_prepare do
       # Load application's model / class decorators
       Dir.glob(File.join(File.dirname(__FILE__), "../app/**/*_decorator*.rb")) do |c|
@@ -21,6 +21,14 @@ module BilletBullet
       end
     end
 
+    config.paperclip_defaults = {
+      :storage => :s3,
+      :s3_credentials => {
+          :bucket => ENV['S3_BUCKET'],
+          :access_key_id => ENV['S3_ACCESS_KEY'],
+          :secret_access_key => ENV['S3_SECRET']
+        }
+    }
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.

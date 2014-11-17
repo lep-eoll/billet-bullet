@@ -5,6 +5,8 @@
 #
 # In order to initialize a setting do:
 # config.setting_name = 'new value'
+
+
 Spree.config do |config|
   # Example:
   # Uncomment to stop tracking inventory levels in the application
@@ -15,6 +17,7 @@ Spree.config do |config|
   config.s3_access_key = ENV['S3_ACCESS_KEY']
   config.s3_secret = ENV['S3_SECRET']
 end
+
 
 Spree.user_class = "Spree::User"
 
