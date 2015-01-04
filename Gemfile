@@ -29,7 +29,7 @@ gem 'spring',        group: :development
 
 
 # Required for Paperclip to be able to use s3
-gem 'aws-sdk',  '~> 1.58.0'
+gem 'aws-sdk',  '~> 1.60.2'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

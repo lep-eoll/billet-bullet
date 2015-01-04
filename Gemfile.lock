@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/spree/spree.git
-  revision: 080da35cf4be4d2d8c4e930c612bd9ee25a7509b
+  revision: 4da14fa0fd9c8e80805af68d87f16885c9bff6b6
   branch: 2-4-stable
   specs:
     spree (2.4.3.beta)
@@ -44,7 +44,7 @@ GIT
       ransack (~> 1.4.1)
       state_machine (= 1.2.0)
       stringex (~> 1.5.1)
-      truncate_html (= 0.9.2)
+      truncate_html (~> 0.9.3)
       twitter_cldr (~> 3.0)
     spree_frontend (2.4.3.beta)
       canonical-rails (~> 0.0.4)
@@ -207,7 +207,7 @@ GEM
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
     mime-types (2.4.3)
-    mini_portile (0.6.1)
+    mini_portile (0.6.2)
     minitest (5.5.0)
     monetize (1.1.0)
       money (~> 6.5.0)
@@ -233,7 +233,7 @@ GEM
       mime-types
     paranoia (2.0.4)
       activerecord (~> 4.0)
-    pg (0.17.1)
+    pg (0.18.0)
     polyamorous (1.1.0)
       activerecord (>= 3.0)
     polyglot (0.3.5)
@@ -243,7 +243,7 @@ GEM
     premailer-rails (1.8.0)
       actionmailer (>= 3, < 5)
       premailer (~> 1.7, >= 1.7.9)
-    puma (2.9.2)
+    puma (2.10.2)
       rack (>= 1.1, < 2.0)
     rabl (0.9.4.pre1)
       activesupport (>= 2.3.14)
@@ -308,7 +308,7 @@ GEM
     thor (0.19.1)
     thread_safe (0.3.4)
     tilt (1.4.1)
-    truncate_html (0.9.2)
+    truncate_html (0.9.3)
     turbolinks (2.5.2)
       coffee-rails
     twitter_cldr (3.1.1)
@@ -334,7 +334,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  aws-sdk (~> 1.58.0)
+  aws-sdk (~> 1.60.2)
   coffee-rails (~> 4.0.0)
   jbuilder (~> 2.0)
   jquery-rails
