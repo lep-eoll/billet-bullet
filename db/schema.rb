@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141117010167) do
+ActiveRecord::Schema.define(version: 20141227132002) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,22 @@ ActiveRecord::Schema.define(version: 20141117010167) do
   add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", using: :btree
   add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
+
+  create_table "spree_activators", force: true do |t|
+    t.string   "description"
+    t.datetime "expires_at"
+    t.datetime "starts_at"
+    t.string   "name"
+    t.string   "event_name"
+    t.string   "type"
+    t.integer  "usage_limit"
+    t.string   "match_policy", default: "all"
+    t.string   "code"
+    t.boolean  "advertise",    default: false
+    t.string   "path"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "spree_addresses", force: true do |t|
     t.string   "firstname"
@@ -213,6 +229,13 @@ ActiveRecord::Schema.define(version: 20141117010167) do
 
   add_index "spree_log_entries", ["source_id", "source_type"], name: "index_spree_log_entries_on_source_id_and_source_type", using: :btree
 
+  create_table "spree_mail_methods", force: true do |t|
+    t.string   "environment"
+    t.boolean  "active",      default: true
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "spree_option_type_translations", force: true do |t|
     t.integer  "spree_option_type_id"
     t.string   "locale"
@@ -316,6 +339,7 @@ ActiveRecord::Schema.define(version: 20141117010167) do
   add_index "spree_orders", ["confirmation_delivered"], name: "index_spree_orders_on_confirmation_delivered", using: :btree
   add_index "spree_orders", ["considered_risky"], name: "index_spree_orders_on_considered_risky", using: :btree
   add_index "spree_orders", ["created_by_id"], name: "index_spree_orders_on_created_by_id", using: :btree
+  add_index "spree_orders", ["guest_token"], name: "index_spree_orders_on_guest_token", using: :btree
   add_index "spree_orders", ["number"], name: "index_spree_orders_on_number", using: :btree
   add_index "spree_orders", ["ship_address_id"], name: "index_spree_orders_on_ship_address_id", using: :btree
   add_index "spree_orders", ["shipping_method_id"], name: "index_spree_orders_on_shipping_method_id", using: :btree
@@ -536,7 +560,8 @@ ActiveRecord::Schema.define(version: 20141117010167) do
   add_index "spree_promotion_translations", ["locale"], name: "index_spree_promotion_translations_on_locale", using: :btree
   add_index "spree_promotion_translations", ["spree_promotion_id"], name: "index_spree_promotion_translations_on_spree_promotion_id", using: :btree
 
-  create_table "spree_promotions", force: true do |t|
+  create_table "spree_promotions", id: false, force: true do |t|
+    t.integer  "id",                    default: "nextval('spree_promotions_id_seq'::regclass)", null: false
     t.string   "description"
     t.datetime "expires_at"
     t.datetime "starts_at"
