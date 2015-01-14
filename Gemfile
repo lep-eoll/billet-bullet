@@ -5,7 +5,7 @@ ruby '2.2.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.9'
 # Use postgresql as the database for Active Record
-gem 'pg', '>= 0.18.0'
+gem 'pg', '>= 0.18.1'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.5'
 # Use Uglifier as compressor for JavaScript assets
@@ -14,6 +14,9 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
+
+# Template love
+gem 'haml-rails', '>= 0.7.0'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -45,9 +48,15 @@ gem 'rails_12factor', group: :production
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-
 gem 'spree',             git: 'https://github.com/spree/spree.git',             branch: '2-4-stable'
 gem 'spree_gateway',     git: 'https://github.com/spree/spree_gateway.git',     branch: '2-4-stable'
 gem 'spree_auth_devise', git: 'https://github.com/spree/spree_auth_devise.git', branch: '2-4-stable'
-gem 'spree_i18n',        git: 'https://github.com/spree/spree_i18n',            branch: '2-4-stable'
-gem 'spree_fancy',       git: 'https://github.com/lep-eoll/spree_fancy.git' #,  branch: '2-4-stable'
+#gem 'spree_i18n',        git: 'https://github.com/spree/spree_i18n',            branch: '2-4-stable'
+#gem 'spree_fancy',       path: '/Users/ivar/Projects/spree_fancy' #,  branch: '2-4-stable'
+#gem 'spree_fancy',       git: 'https://github.com/lep-eoll/spree_fancy.git' #,  branch: '2-4-stable'
+
+group :development do
+  gem 'xray-rails'
+end
+
+
