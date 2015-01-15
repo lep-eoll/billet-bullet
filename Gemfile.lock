@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/spree/spree.git
-  revision: cf22b7d563da1eda50cdf025d667facdc3dbe565
+  revision: 6aa500c4cade93e205840a58d6b34843f09915cc
   branch: 2-4-stable
   specs:
     spree (2.4.3.beta)
@@ -163,7 +163,7 @@ GEM
       devise (>= 2.1.0)
     erubis (2.7.0)
     execjs (2.2.2)
-    ffaker (1.30.0)
+    ffaker (1.31.0)
     font-awesome-rails (4.2.0.0)
       railties (>= 3.2, < 5.0)
     friendly_id (5.0.4)
@@ -335,6 +335,7 @@ PLATFORMS
 DEPENDENCIES
   aws-sdk (~> 1.60.2)
   coffee-rails (~> 4.1.0)
+  haml (~> 4.0.6)
   haml-rails (>= 0.7.0)
   jbuilder (~> 2.0)
   jquery-rails

@@ -17,6 +17,7 @@ gem 'coffee-rails', '~> 4.1.0'
 
 # Template love
 gem 'haml-rails', '>= 0.7.0'
+gem 'haml', '~> 4.0.6'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
