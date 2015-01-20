@@ -41,7 +41,8 @@ gem 'aws-sdk',  '~> 1.60.2'
 # Use puma as the app server
 gem 'puma'
 
-gem 'rails_12factor', group: :production
+#removing for testing ninefold
+#gem 'rails_12factor', group: :production
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
