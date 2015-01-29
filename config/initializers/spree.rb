@@ -12,10 +12,6 @@ Spree.config do |config|
   # Uncomment to stop tracking inventory levels in the application
   # config.track_inventory_levels = false
   Devise.secret_key = ENV['DEVISE_SECRET_KEY']
-  config.use_s3 = true
-  config.s3_bucket = 'lep2015'
-  config.s3_access_key = ENV['S3_ACCESS_KEY']
-  config.s3_secret = ENV['S3_SECRET']
 
   config.logo = 'cropped-LEP2015-Banner-White-Web-525wide.png'
 end
