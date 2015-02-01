@@ -1,0 +1,18 @@
+<%
+  paginated_products = @searcher.retrieve_products if params.key?(:keywords)
+  paginated_products ||= products
+%>
+
+<ul id="homepage_products" >
+  <% products.each do |product| %>
+    <% url = product_path(product, :taxon_id => @taxon.try(:id)) %>
+    <li id="product_<%= product.id %>">
+      <% cache(@taxon.present? ? [I18n.locale, current_currency, @taxon, product] : [I18n.locale, current_currency, product]) do %>
+        <%= link_to truncate(product.name, :length => 100), url,  :title => product.name %>
+        <span >
+          <%#<%= display_price(product) %>
+        </span>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
