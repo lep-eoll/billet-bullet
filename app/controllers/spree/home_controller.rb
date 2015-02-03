@@ -4,8 +4,7 @@ module Spree
     respond_to :html
 
     def index
-      #@searcher = build_searcher(params.merge(include_images: true))
-      @searcher = build_searcher params
+      @searcher = build_searcher (params.merge(include_properties: true))
       @products = @searcher.retrieve_products
     end
   end
