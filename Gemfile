@@ -1,8 +1,11 @@
+source 'https://code.stripe.com'
 source 'https://rubygems.org'
+
 
 ruby '2.2.0'
 
 gem 'rails'        , '4.1.9'
+gem 'stripe'
 gem 'pg'           , '>= 0.18.1'
 gem 'sass-rails'   , '~> 4.0.5'
 gem 'uglifier'     , '>= 1.3.0' # Use Uglifier as compressor for JavaScript assets
@@ -23,7 +26,8 @@ gem 'puma'                               # Use puma as the app server
 gem 'rails_12factor', group: :production
 
 group :development do
-  gem 'spring'     # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'pry-rails'  # Ruby console par excellence
-  gem 'xray-rails' # Utility to enable view/partial hacking with cmd+shift+x (Mac) or ctrl+shift+x
+  gem 'spring'        # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+  gem 'pry-rails'     # Ruby console par excellence
+  gem 'xray-rails'    # Utility to enable view/partial hacking with cmd+shift+x (Mac) or ctrl+shift+x
+  gem 'awesome_print' # ooo.. pretty
 end
