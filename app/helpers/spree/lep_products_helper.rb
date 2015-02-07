@@ -1,5 +1,5 @@
 module Spree
-  module ProductsHelper
+  module LepProductsHelper
     def each_date_bucket(&block)
       buckets = @products.group_by do |product|
         product.property 'Date'
