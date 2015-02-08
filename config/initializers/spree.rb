@@ -14,6 +14,7 @@ Spree.config do |config|
   Devise.secret_key = ENV['DEVISE_SECRET_KEY']
   config.products_per_page = 500
   config.logo = 'cropped-LEP2015-Banner-White-Web-525wide.png'
+  config.show_variant_full_price = true
 end
 
 
