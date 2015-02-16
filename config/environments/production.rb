@@ -39,7 +39,7 @@ Rails.application.configure do
   # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for nginx
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
-  # config.force_ssl = true
+  config.force_ssl = true
 
   # Set to :debug to see everything in the log.
   config.log_level = :info
@@ -87,7 +87,7 @@ Rails.application.configure do
   config.middleware.insert_before(Rack::Runtime, Rack::Rewrite) do
     canonical_server_name = ENV['CANONICAL_SERVER_NAME'] || 'CANONICAL_SERVER_NAME'
     r301 %r{.*}, "https://#{canonical_server_name}$&", :scheme => 'http'
-    r301 %r{.*}, "#{canonical_server_name}$&", :if => Proc.new {|rack_env|
+    r301 %r{.*}, "https://#{canonical_server_name}", :if => Proc.new {|rack_env|
       rack_env['SERVER_NAME'] != canonical_server_name
     }
   end
