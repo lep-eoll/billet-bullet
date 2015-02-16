@@ -82,4 +82,14 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  # Ensure production uses https
+  config.middleware.insert_before(Rack::Runtime, Rack::Rewrite) do
+    canonical_server_name = ENV['CANONICAL_SERVER_NAME'] || 'CANONICAL_SERVER_NAME'
+    r301 %r{.*}, "https://#{canonical_server_name}$&", :scheme => 'http'
+    r301 %r{.*}, "#{canonical_server_name}$&", :if => Proc.new {|rack_env|
+      rack_env['SERVER_NAME'] != canonical_server_name
+    }
+  end
+
 end
