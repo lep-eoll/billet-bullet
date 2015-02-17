@@ -24,10 +24,10 @@ gem 'jbuilder', '~> 2.0'                 # Build JSON APIs with ease. Read more:
 gem 'aws-sdk' , '~> 1.60.2'              # Required for Paperclip to be able to use s3
 gem 'sdoc'    , '~> 0.4.0',  group: :doc # bundle exec rake doc:rails generates the API under doc/api.
 gem 'puma'                               # Use puma as the app server
+gem 'rack-rewrite'
 
 group :production do
   gem 'rails_12factor'
-  gem 'rack-rewrite'
 end
 
 group :development do

@@ -86,12 +86,15 @@ Rails.application.configure do
   # Ensure production uses https
   config.middleware.insert_before(Rack::Runtime, Rack::Rewrite) do
     canonical_server_name = ENV['CANONICAL_SERVER_NAME'] || 'CANONICAL_SERVER_NAME'
-    r301 %r{.*}, "https://#{canonical_server_name}$&", :scheme => 'http'
-    r301 %r{.*}, "https://#{canonical_server_name}", :if => Proc.new {|rack_env|
+    r301 %r{.*}, "https://#{canonical_server_name}$&", :if => Proc.new {|rack_env|
       rack_env['SERVER_NAME'] != canonical_server_name
     }
+    r301 %r{.*}, "https://#{canonical_server_name}$&", :scheme => 'http'
   end
 
+  #r301 %r{.*}, 'https://tickets.lep2015.com$&', :if => Proc.new {|rack_env|
+    #rack_env['SERVER_NAME'] != 'tickets.lep2015.com'
+  #}
   ActionMailer::Base.smtp_settings = {
       :port =>           '587',
       :address =>        'smtp.mandrillapp.com',
