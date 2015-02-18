@@ -9,6 +9,7 @@ Rails.application.configure do
   # Do not eager load code on boot.
   config.eager_load = false
 
+
   # Show full error reports and disable caching.
   config.consider_all_requests_local       = true
   config.action_controller.perform_caching = false
@@ -34,14 +35,5 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
-
-  # Ensure production uses https
-  config.middleware.insert_before(Rack::Runtime, Rack::Rewrite) do
-    canonical_server_name = ENV['CANONICAL_SERVER_NAME'] || 'CANONICAL_SERVER_NAME'
-    r301 %r{.*}, "https://#{canonical_server_name}$&", :scheme => 'http'
-    r301 %r{}, "https://#{canonical_server_name}", :if => Proc.new {|rack_env|
-      rack_env['SERVER_NAME'] != canonical_server_name
-    }
-  end
 
 end

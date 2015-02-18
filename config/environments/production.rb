@@ -92,9 +92,6 @@ Rails.application.configure do
     r301 %r{.*}, "https://#{canonical_server_name}$&", :scheme => 'http'
   end
 
-  #r301 %r{.*}, 'https://tickets.lep2015.com$&', :if => Proc.new {|rack_env|
-    #rack_env['SERVER_NAME'] != 'tickets.lep2015.com'
-  #}
   ActionMailer::Base.smtp_settings = {
       :port =>           '587',
       :address =>        'smtp.mandrillapp.com',
