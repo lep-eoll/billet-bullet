@@ -19,6 +19,8 @@ module Spree
     private
     def name_to_title(date_string)
       case date_string.split('-').last
+      when '04'
+        'Aug 4 - Teisipäev / Tuesday'
       when '05'
         'Aug 5 - Kolmapäev / Wednesday'
       when '06'
@@ -31,6 +33,8 @@ module Spree
         'Aug 9 - Pühapäev / Sunday'
       when '10'
         'Aug 10 - Esmaspäev / Monday'
+      when '11'
+        'Aug 11 - Teisipäev / Tuesday'
       end
     end
 
