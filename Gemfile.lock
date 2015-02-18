@@ -1,4 +1,12 @@
 GIT
+  remote: git://github.com/lep-eoll/spree_add_to_cart_ajax.git
+  revision: a03d529c592a21abb5eceb195785b4e9f712e6cf
+  branch: 2-4-stable
+  specs:
+    spree_add_to_cart_ajax (2.4.x)
+      spree_core (~> 2.4.0)
+
+GIT
   remote: https://github.com/spree/spree.git
   revision: 7b1ff5c21d932f192b9f3ad8f8d9f843f63c1ccd
   branch: 2-4-stable
@@ -370,6 +378,7 @@ DEPENDENCIES
   sass-rails (~> 4.0.5)
   sdoc (~> 0.4.0)
   spree!
+  spree_add_to_cart_ajax!
   spree_auth_devise!
   spree_gateway!
   spring

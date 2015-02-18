@@ -14,9 +14,11 @@ gem 'haml-rails'   , '>= 0.7.0' # Template love
 gem 'haml'         , '~> 4.0.6'
 gem 'dalli'
 
-gem 'spree',             git: 'https://github.com/spree/spree.git',             branch: '2-4-stable'
-gem 'spree_gateway',     git: 'https://github.com/spree/spree_gateway.git',     branch: '2-4-stable'
-gem 'spree_auth_devise', git: 'https://github.com/spree/spree_auth_devise.git', branch: '2-4-stable'
+gem 'spree'                  , git: 'https://github.com/spree/spree.git'             , branch: '2-4-stable'
+gem 'spree_gateway'          , git: 'https://github.com/spree/spree_gateway.git'     , branch: '2-4-stable'
+gem 'spree_auth_devise'      , git: 'https://github.com/spree/spree_auth_devise.git' , branch: '2-4-stable'
+gem 'spree_add_to_cart_ajax' , github: 'lep-eoll/spree_add_to_cart_ajax'             , branch: '2-4-stable'
+
 
 gem 'jquery-rails'                       # Use jquery as the JavaScript library
 gem 'turbolinks'                         # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
