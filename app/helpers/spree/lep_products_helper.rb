@@ -35,8 +35,11 @@ module Spree
     end
 
     def sort_date_bucket(events)
-      events.sort {|a,b| a.property('Time') <=> b.property('Time')}
+      events.sort {|a,b| date_to_i(a.property 'Time') <=> date_to_i(b.property 'Time')}
     end
 
+    def date_to_i(date_string)
+      date_string.gsub(':','').to_i
+    end
   end
 end
