@@ -43,7 +43,7 @@ module Spree
     end
 
     def date_to_i(date_string)
-      date_string.gsub(':','').to_i
+      date_string ? date_string.gsub(':','').to_i : 0
     end
   end
 end
