@@ -15,6 +15,18 @@ module Spree
       yield 'No date', buckets[nil] if buckets[nil] && block_given?
     end
 
+    def lep_property_name(name)
+       case name
+       when 'Venue'
+         'Koht / Venue'
+       when 'Date'
+         'Kuupäev / Date'
+       when 'Time'
+         'Aeg / Time'
+       else
+         name
+       end
+    end
 
     private
     def name_to_title(date_string)
