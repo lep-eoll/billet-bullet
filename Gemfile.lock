@@ -200,6 +200,8 @@ GEM
       json (~> 1.8)
       multi_xml (>= 0.5.2)
     i18n (0.7.0)
+    informant-rails (0.8.0)
+      rails (>= 3.0.0, < 4.3.0)
     jbuilder (2.2.8)
       activesupport (>= 3.0.0, < 5)
       multi_json (~> 1.2)
@@ -368,6 +370,7 @@ DEPENDENCIES
   dalli
   haml (~> 4.0.6)
   haml-rails (>= 0.7.0)
+  informant-rails
   jbuilder (~> 2.0)
   jquery-rails
   newrelic_rpm
