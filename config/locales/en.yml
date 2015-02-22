@@ -21,3 +21,6 @@
 
 en:
   hello: "Hello world"
+  spree:
+    zip: "Postal Code"
+    state: "Province"
