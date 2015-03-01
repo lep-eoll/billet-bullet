@@ -15,8 +15,8 @@ Spree.config do |config|
   config.products_per_page = 500
   config.logo = 'cropped-LEP2015-Banner-White-Web-525wide.png'
   config.show_variant_full_price = true
+  config.mails_from = 'tickets@lep2015.com'
 end
-
 
 Spree.user_class = "Spree::User"
 
