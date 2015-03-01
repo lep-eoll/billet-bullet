@@ -19,6 +19,7 @@ gem 'spree'                  , git: 'https://github.com/spree/spree.git'        
 gem 'spree_gateway'          , git: 'https://github.com/spree/spree_gateway.git'     , branch: '2-4-stable'
 gem 'spree_auth_devise'      , git: 'https://github.com/spree/spree_auth_devise.git' , branch: '2-4-stable'
 gem 'spree_add_to_cart_ajax' , github: 'lep-eoll/spree_add_to_cart_ajax'             , branch: '2-4-stable'
+gem 'spree_flexi_variants'   , github: 'lep-eoll/spree_flexi_variants'           , branch: 'spree-2-2-stable'
 
 gem 'jquery-rails'                       # Use jquery as the JavaScript library
 gem 'turbolinks'                         # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
@@ -31,6 +32,7 @@ gem 'rack-rewrite'
 group :production do
   gem 'rails_12factor'
   gem 'informant-rails'
+  gem 'runtimeerror_notifier'
 end
 
 group :development do
