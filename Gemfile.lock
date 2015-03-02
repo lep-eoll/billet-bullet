@@ -7,16 +7,6 @@ GIT
       spree_core (~> 2.4.0)
 
 GIT
-  remote: git://github.com/lep-eoll/spree_flexi_variants.git
-  revision: 92c4b733feb4c642c674ded673e847ab4dc75011
-  branch: spree-2-2-stable
-  specs:
-    spree_flexi_variants (2.1.0)
-      carrierwave
-      mini_magick
-      spree (>= 2.1)
-
-GIT
   remote: https://github.com/spree/spree.git
   revision: 85f5308df93647be4f4bb74851795fc51b839939
   branch: 2-4-stable
@@ -153,11 +143,6 @@ GEM
       rails (>= 3.1, < 5.0)
     carmen (1.0.1)
       unicode_utils (~> 1.4.0)
-    carrierwave (0.10.0)
-      activemodel (>= 3.2.0)
-      activesupport (>= 3.2.0)
-      json (>= 1.7)
-      mime-types (>= 1.16)
     cldr-plurals-runtime-rb (1.0.0)
     climate_control (0.0.3)
       activesupport (>= 3.0)
@@ -233,7 +218,6 @@ GEM
       mime-types (>= 1.16, < 3)
     method_source (0.8.2)
     mime-types (2.4.3)
-    mini_magick (4.1.0)
     mini_portile (0.6.2)
     minitest (5.5.1)
     monetize (1.1.0)
@@ -408,7 +392,6 @@ DEPENDENCIES
   spree!
   spree_add_to_cart_ajax!
   spree_auth_devise!
-  spree_flexi_variants!
   spree_gateway!
   spring
   stripe
