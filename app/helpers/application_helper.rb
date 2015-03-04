@@ -6,8 +6,7 @@ module ApplicationHelper
     elsif checkout_page?
       '&nbsp;'.html_safe
     else
-
-      link_to '&larr; Pilleti Indeks / Back to Tickets'.html_safe, spree.root_path
+      link_to '&larr; Pileti Indeks / Back to Tickets'.html_safe, spree.root_path
     end
   end
 
