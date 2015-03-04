@@ -1,19 +1,16 @@
 module Spree
   module LepProductsHelper
 
-    def each_date_bucket(&block)
+    def each_sorted_bucket(&block)
+
       buckets = @products.group_by do |product|
         product.property 'Date'
       end
+
+      yield 'Registreerimine - Registration', sort_date_bucket(buckets[nil]) if buckets[nil] && block_given?
+
       bucket_names = buckets.keys.compact.sort
-
-      registration_section = bucket_names.delete 'pre-festival'
-
-      yield 'Registreerimine - Registration', buckets['pre-festival'] if registration_section.present?
-
       bucket_names.each {|name| yield name_to_title(name), sort_date_bucket(buckets[name]) if block_given?}
-
-      yield 'No date', buckets[nil] if buckets[nil] && block_given?
     end
 
     def lep_property_name(name)

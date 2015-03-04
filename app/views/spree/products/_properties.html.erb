@@ -3,11 +3,15 @@
   <table id="product-properties" class="table-display" data-hook>
     <tbody>
       <% @product_properties.each do |product_property| %>
-        <% css_class = cycle('even', 'odd', :name => "properties") %>
-        <tr class="<%= css_class %>">
-          <td><strong><%= lep_property_name product_property.property.presentation %></strong></td>
-          <td><%= product_property.value %></td>
-        </tr>
+        <%if product_property.property.presentation == 'Time' && @product_properties.none? {|prop| prop.property.presentation == 'Date'} %>
+          <%# do nothing %>
+        <% else %>
+          <% css_class = cycle('even', 'odd', :name => "properties") %>
+          <tr class="<%= css_class %>">
+            <td><strong><%= lep_property_name product_property.property.presentation %></strong></td>
+            <td><%= product_property.value %></td>
+          </tr>
+        <% end %>
       <% end %>
       <% reset_cycle('properties') %>
     </tbody>

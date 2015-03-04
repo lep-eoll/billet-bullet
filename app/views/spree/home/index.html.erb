@@ -1,5 +1,5 @@
 <div data-hook="homepage_products">
-   <% each_date_bucket do |name, products | -%>
+   <% each_sorted_bucket do |name, products | -%>
      <h2><%= name -%></h3>
      <%= render :partial => 'spree/shared/products', :locals => { :products => products } %>
    <% end -%>
