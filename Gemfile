@@ -30,7 +30,6 @@ gem 'rack-rewrite'
 
 group :production do
   gem 'rails_12factor'
-  gem 'informant-rails'
   gem 'runtimeerror_notifier'
 end
 
