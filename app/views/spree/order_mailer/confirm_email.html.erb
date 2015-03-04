@@ -5,7 +5,11 @@
   <tr>
     <td>
       <p class="lede">
-        Dear <%= @order.user.bill_address.firstname + ' ' + @order.user.bill_address.lastname %>,
+      <%
+        address = @order.user.present? ? @order.user.bill_address : @order.bill_address
+        user_name = address.firstname + ' ' + address.lastname
+      %>
+      Dear <%= user_name %>,
       </p>
       <p>
       The countdown to LEP 2015 is on!
