@@ -1,0 +1,2 @@
+zeus: echo "Booting Zeus..."; zeus start &> /dev/null
+web: bundle exec spring rails s
