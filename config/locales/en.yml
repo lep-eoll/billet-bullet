@@ -23,4 +23,18 @@ en:
   hello: "Hello world"
   spree:
     zip: "Postal Code"
+    zipcode: "Postal Code"
     state: "Province"
+    thank_you_for_your_order: Thank you for your business.
+  activerecord:
+    attributes:
+      spree/address:
+        state: Province
+        zipcode: Postal Code
+      spree/order/bill_address:
+        state: Billing address province
+        zipcode: Billing address postal code
+      spree/order/ship_address:
+        state: Shipping address province
+        zipcode: Shipping address postal code
+
