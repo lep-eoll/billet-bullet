@@ -11,10 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150109120614) do
+ActiveRecord::Schema.define(version: 20150305060045) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "event_registrations", force: true do |t|
+    t.string   "name"
+    t.integer  "line_item_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
 
   create_table "friendly_id_slugs", force: true do |t|
     t.string   "slug",                      null: false
@@ -572,7 +579,7 @@ ActiveRecord::Schema.define(version: 20150109120614) do
   add_index "spree_promotion_translations", ["spree_promotion_id"], name: "index_spree_promotion_translations_on_spree_promotion_id", using: :btree
 
   create_table "spree_promotions", id: false, force: true do |t|
-    t.integer  "id",                    default: "nextval('spree_promotions_id_seq'::regclass)", null: false
+    t.integer  "id",                    default: 0,     null: false
     t.string   "description"
     t.datetime "expires_at"
     t.datetime "starts_at"
