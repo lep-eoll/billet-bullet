@@ -8,7 +8,7 @@ GIT
 
 GIT
   remote: https://github.com/spree/spree.git
-  revision: 3a5259640ff76e2c571bf007fbdbf4069cf2aeae
+  revision: 856cf789714ac6d8dc453b72ac9271aa4717edb7
   branch: 2-4-stable
   specs:
     spree (2.4.7.beta)
@@ -48,7 +48,7 @@ GIT
       paperclip (~> 4.2.0)
       paranoia (~> 2.0.5)
       premailer-rails
-      rails (~> 4.1.8)
+      rails (= 4.1.9)
       ransack (~> 1.4.1)
       state_machine (= 1.2.0)
       stringex (~> 1.5.1)
@@ -64,10 +64,10 @@ GIT
 
 GIT
   remote: https://github.com/spree/spree_auth_devise.git
-  revision: 997382fcb1f6ed78a201ee7016384cfe71745aea
+  revision: c53ccc17323e2c22e4b4fdf0292972ff44790233
   branch: 2-4-stable
   specs:
-    spree_auth_devise (2.2.0)
+    spree_auth_devise (2.4.0)
       devise (~> 3.2.3)
       devise-encryptable (= 0.1.2)
       json
@@ -76,7 +76,7 @@ GIT
 
 GIT
   remote: https://github.com/spree/spree_gateway.git
-  revision: f84c5f9b3fcc1107378e47be07538e8a6ca51182
+  revision: 3b40ced38a7643be6a83a9ee1901066e5d765e6c
   branch: 2-4-stable
   specs:
     spree_gateway (2.4.0)
@@ -125,7 +125,7 @@ GEM
       tzinfo (~> 1.1)
     acts_as_list (0.6.0)
       activerecord (>= 3.0)
-    addressable (2.3.7)
+    addressable (2.3.8)
     arel (5.0.1.20140414130214)
     awesome_nested_set (3.0.2)
       activerecord (>= 4.0.0, < 5)
@@ -219,9 +219,9 @@ GEM
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
     method_source (0.8.2)
-    mime-types (2.4.3)
+    mime-types (2.5)
     mini_portile (0.6.2)
-    minitest (5.5.1)
+    minitest (5.6.0)
     monetize (1.1.0)
       money (~> 6.5.0)
     money (6.5.1)
@@ -303,7 +303,7 @@ GEM
     rest-client (1.7.3)
       mime-types (>= 1.16, < 3.0)
       netrc (~> 0.7)
-    ruby_parser (3.6.4)
+    ruby_parser (3.6.6)
       sexp_processor (~> 4.1)
     runtimeerror_notifier (0.0.24)
       actionmailer
@@ -336,12 +336,11 @@ GEM
       sprockets (>= 2.8, < 4.0)
     state_machine (1.2.0)
     stringex (1.5.1)
-    stripe (1.20.2)
+    stripe (1.21.0)
       json (~> 1.8.1)
-      mime-types (>= 1.25, < 3.0)
       rest-client (~> 1.4)
     thor (0.19.1)
-    thread_safe (0.3.4)
+    thread_safe (0.3.5)
     tilt (1.4.1)
     truncate_html (0.9.2)
     turbolinks (2.5.3)
