@@ -37,4 +37,5 @@ group :development do
   gem 'xray-rails'    # Utility to enable view/partial hacking with cmd+shift+x (Mac) or ctrl+shift+x
   gem 'awesome_print' # ooo.. pretty
   gem 'letter_opener'
+  gem 'spreadsheet'
 end
