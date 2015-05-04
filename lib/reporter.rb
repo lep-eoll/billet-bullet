@@ -15,11 +15,11 @@ class Reporter
         # ap "range to add: #{sheet_index..(sheet_index+product_rows_size)}"
         # ap "product rows:"
         # ap product_rows
-        (sheet_index..(sheet_index + product_rows_size)).each do |row_num| 
-          p = product_rows.shift 
-          unless p.nil?
+        (sheet_index..(sheet_index + product_rows_size)).each do |row_num|
+          row = product_rows.shift
+          unless row.nil?
             sheet.row(row_num).default_format = event_title_format if row_num == sheet_index
-            sheet.row(row_num).concat p 
+            sheet.row(row_num).concat row
           end
         end
         sheet_index += (product_rows_size +1)
@@ -28,12 +28,16 @@ class Reporter
     book.write output_filename
   end
 
+  def order_report(output_filename = 'order_report.xls')
+
+  end
+
   private
 
   def event_title_format
     @title ||= Spreadsheet::Format.new weight: :bold, size: 18
   end
-    
+
   def process_product(product)
     product_rows = [[product.name]]
     product.line_items.group_by { |li| li.variant_id }.each do |variant_array|
