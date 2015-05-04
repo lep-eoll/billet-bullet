@@ -22,20 +22,47 @@ class Reporter
             sheet.row(row_num).concat row
           end
         end
-        sheet_index += (product_rows_size +1)
+        sheet_index += (product_rows_size + 1)
       end
     end
     book.write output_filename
   end
 
   def order_report(output_filename = 'order_report.xls')
-
+    book = Spreadsheet::Workbook.new
+    Spree::Order.includes(:bill_address).where(state: :complete).group_by {|order| order.billing_address.lastname[0]}.sort.each do |letter_group|
+      sheet = book.create_worksheet(name: letter_group[0])
+      sheet_index = 2
+      sheet.row(0).concat ['Name', 'Order #', 'sku', 'quantity', 'price per ticket']
+      letter_group[1].sort { |x,y| x.billing_address.last_name <=> y.billing_address.last_name }.each do |order|
+        order_rows = process_order(order)
+        order_rows_size = order_rows.size
+        (sheet_index..(sheet_index + order_rows_size)).each do |row_num|
+          row = order_rows.shift
+          unless row.nil?
+            sheet.row(row_num).default_format = event_title_format if row_num == sheet_index
+            sheet.row(row_num).concat row
+          end
+        end
+        sheet_index += (order_rows_size + 1)
+      end
+    end
+    book.write output_filename
   end
 
   private
 
   def event_title_format
     @title ||= Spreadsheet::Format.new weight: :bold, size: 18
+  end
+
+  def process_order(order)
+    order_rows = [[ "#{order.billing_address.last_name}, #{order.billing_address.first_name}","##{order.number}"]]
+    order_rows << [order.email, order.created_at.strftime('%y %m %d') ]
+    order.line_items.each do |line_item|
+      order_rows << ['',line_item.product.name, line_item.sku, line_item.quantity, "$#{line_item.price}" ]
+    end
+    order_rows
   end
 
   def process_product(product)
