@@ -1,6 +1,6 @@
 class Reporter
 
-  def product_report(output_filename = 'product_report.xls')
+  def product_report(output_filename = "product_report_total_sales_to_#{Time.now.strftime('%m_%d')}.xls")
     book = Spreadsheet::Workbook.new
     Spree::Product.all.group_by {|product| product.name[0].upcase }.sort.each do |alpha_product|
       # ap "NEW SHEET #{alpha_product[0]} -----------------------------------------------------------------------------"
@@ -28,7 +28,7 @@ class Reporter
     book.write output_filename
   end
 
-  def order_report(output_filename = 'order_report.xls')
+  def order_report(output_filename = "order_report_total_sales_to_#{Time.now.strftime('%m_%d')}.xls")
     book = Spreadsheet::Workbook.new
     Spree::Order.includes(:bill_address).where(state: :complete).group_by {|order| order.billing_address.lastname.titleize[0]}.sort.each do |letter_group|
       sheet = book.create_worksheet(name: letter_group[0])
