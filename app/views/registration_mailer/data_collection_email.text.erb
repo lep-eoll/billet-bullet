@@ -1,0 +1,45 @@
+<%
+  address = @order.user.present? ? @order.user.bill_address : @order.bill_address
+  address = @order.ship_address if address.nil?
+  user_name = address.firstname + ' ' + address.lastname
+%>
+Dear <%= user_name %>,
+
+Thank you for purchasing event tickets for this Summer’s LEP Festival. We look forward to seeing you in Whistler.
+
+To finalize your registration package, we ask that you please respond to this email with the following information, as it applies to your order:
+============================================================
+<% if @num_registrations > 0 %>
+Provide the names of all persons registered on this ticket order (adults, youth and children) – this will ensure that we have name badges for all of you.
+The link to provide registration information is  <%= @reg_url %>.
+============================================================
+<% end %>
+
+<% if @num_ball_tix > 0 %>
+Please indicate your meal preference for the Golden Ball by filling out the form at:
+https://docs.google.com/forms/d/1Eld9ZeR5ICtN3QdRXt6fYuoqi446gnzzHvccKE4L4ss/viewform
+
+(Please fill out a form for each person attending.)
+============================================================
+<% end %>
+
+<% if @num_greets > 0 %>
+<%
+  greet_url = if @num_greets == 1
+      "https://docs.google.com/forms/d/1R3fwkMYumRJ0Pcm6WEbkJ9dBj_9UniI5pVnQMAJP7us/viewform?entry.394773188=#{@order.number}&entry.1447869034=#{URI::encode(user_name)}"
+    else
+      "https://docs.google.com/forms/d/1SPI1hToJSSgWDTK5NkjsZrLS1S7DBkLopxyD6Akpr6M/viewform?entry.394773188=#{@order.number}&entry.1447869034=#{URI::encode(user_name)}"
+    end
+ %>
+As you paid for a personal or business greeting in the Festival Program, please indicate how you would like your name(s) or business name(s)to appear in the program by filling out the form at:
+<%= greet_url %>
+============================================================
+<% end %>
+
+Reminder- Delivery of Tickets
+
+Purchased tickets will be available for pickup at the Festival registration area in the Hilton Hotel from Aug 4th - 8th, 2015. Please ensure you pick up your tickets at least 1 hour prior to the start of the performance. Tickets are non-refundable and have no cash value. Should you have any questions about your purchase, please email info@lep2015.com.<br/>
+We look forward to seeing you in Whistler this summer as we celebrate Estonia on the West Coast.
+
+Regards,
+The LEP 2015 Vancouver/Whistler Organizing Committee
