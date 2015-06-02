@@ -8,6 +8,6 @@ class RegistrationMailer < ActionMailer::Base
     @num_registrations = num_regs
     @reg_url = registration_url
 
-    mail(to: 'ivar@oobik.com', cc: 'liligo@shaw.ca', subject: 'LEP2015 Registration Info Needed for Your Event Tickets!')
+    mail(to: @order.email,  subject: 'LEP2015 Registration Info Needed for Your Event Tickets!')
   end
 end
