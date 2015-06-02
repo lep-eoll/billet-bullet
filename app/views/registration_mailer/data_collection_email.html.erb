@@ -7,7 +7,7 @@
       <p class="lede">
       <%
         address = @order.user.present? ? @order.user.bill_address : @order.bill_address
-        address = @order.ship_address if address.nil?
+        address = @order.bill_address if address.nil?
         user_name = address.firstname + ' ' + address.lastname
       %>
       Dear <%= user_name %>,
