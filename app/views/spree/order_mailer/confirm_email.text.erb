@@ -3,10 +3,10 @@
   address = @order.bill_address if address.nil?
   user_name = address.firstname + ' ' + address.lastname
 
-  @num_greets =  number_of_greetings(order)
-  @num_ball_tix = num_ball_tickets(order)
-  @num_registration = num_registrations(order)
-  @reg_url = registration_link(order,regs)
+  @num_greets =  number_of_greetings(@order)
+  @num_ball_tix = num_ball_tickets(@order)
+  @num_registrations = num_registrations(@order)
+  @reg_url = registration_link(@order,@num_registrations)
 %>
 Dear <%= user_name %>,
 
@@ -47,7 +47,7 @@ Thank you for using LEP 2015 online ticketing system. This email confirms your p
 <% end %>
 
 
-<% if (@num_registration > 0) || (@num_ball_tix > 0) || (@num_greets > 0) %>
+<% if (@num_registrations > 0) || (@num_ball_tix > 0) || (@num_greets > 0) %>
 
 To finalize your registration package, we ask that you please respond to this email with the following information, as it applies to your order:
 <% if @num_registrations > 0 %>

@@ -3,10 +3,10 @@ address = @order.user.present? ? @order.user.bill_address : @order.bill_address
 address = @order.bill_address if address.nil?
 user_name = address.firstname + ' ' + address.lastname
 
-@num_greets =  number_of_greetings(order)
-@num_ball_tix = num_ball_tickets(order)
-@num_registration = num_registrations(order)
-@reg_url = registration_link(order,regs)
+@num_greets =  number_of_greetings(@order)
+@num_ball_tix = num_ball_tickets(@order)
+@num_registrations = num_registrations(@order)
+@reg_url = registration_link(@order,@num_registrations)
 %>
 <table>
   <tr>
@@ -87,7 +87,7 @@ user_name = address.firstname + ' ' + address.lastname
       </table>
 
       <hr/><br/>
-      <% if (@num_registration > 0) || (@num_ball_tix > 0) || (@num_greets > 0) %>
+      <% if (@num_registrations > 0) || (@num_ball_tix > 0) || (@num_greets > 0) %>
         <p>
         To finalize your registration package, we ask that you please respond to this email with the following information, as it applies to your order:
         </p>
