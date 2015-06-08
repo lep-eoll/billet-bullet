@@ -2,11 +2,6 @@
   address = @order.user.present? ? @order.user.bill_address : @order.bill_address
   address = @order.bill_address if address.nil?
   user_name = address.firstname + ' ' + address.lastname
-
-  @num_greets =  number_of_greetings(@order)
-  @num_ball_tix = num_ball_tickets(@order)
-  @num_registrations = num_registrations(@order)
-  @reg_url = registration_link(@order,@num_registrations)
 %>
 Dear <%= user_name %>,
 
