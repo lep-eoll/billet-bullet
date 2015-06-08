@@ -26,9 +26,11 @@ class Reporter
       end
     end
     book.write output_filename
+    puts "generated product report to: #{output_filename}"
+    output_filename
   end
 
-  def order_report(output_filename = "order_report_total_sales_to_#{Time.now.strftime('%m_%d')}.xls")
+  def customer_order_report(output_filename = "order_report_total_sales_to_#{Time.now.strftime('%m_%d')}.xls")
     book = Spreadsheet::Workbook.new
     Spree::Order.includes(:bill_address).where(state: :complete).group_by {|order| order.billing_address.lastname.titleize[0]}.sort.each do |letter_group|
       sheet = book.create_worksheet(name: letter_group[0])
@@ -48,6 +50,33 @@ class Reporter
       end
     end
     book.write output_filename
+    puts "generated customer order report to: #{output_filename}"
+    output_filename
+  end
+
+  def date_order_report(num_days_back = 14)
+    output_filename = "orders_by_date_from_#{Date.current.strftime('%a_%b_%d')}_to_#{num_days_back.days.ago.strftime('%a_%b_%d')}.xls"
+    book = Spreadsheet::Workbook.new
+    Spree::Order.includes(:bill_address).where(["created_at > ?", num_days_back.days.ago]).where(state: :complete ).group_by {|order| order.updated_at.strftime('%y-%m-%d %a')}.sort.reverse.each do |date_string|
+      sheet = book.create_worksheet(name: date_string[0])
+      sheet_index = 2
+      sheet.row(0).concat ['Name', 'Order #', 'sku', 'quantity', 'price per ticket']
+      date_string[1].sort { |x,y| x.billing_address.last_name.titleize <=> y.billing_address.last_name.titleize }.each do |order|
+        order_rows = process_order(order)
+        order_rows_size = order_rows.size
+        (sheet_index..(sheet_index + order_rows_size)).each do |row_num|
+          row = order_rows.shift
+          unless row.nil?
+            sheet.row(row_num).default_format = event_title_format if row_num == sheet_index
+            sheet.row(row_num).concat row
+          end
+        end
+        sheet_index += (order_rows_size + 1)
+      end
+    end
+    book.write output_filename
+    puts "generated date order report to: #{output_filename}"
+    output_filename
   end
 
   private

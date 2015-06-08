@@ -311,6 +311,7 @@ GEM
     ruby-ole (1.2.11.8)
     ruby_parser (3.7.0)
       sexp_processor (~> 4.1)
+    rubyzip (1.1.7)
     runtimeerror_notifier (0.0.27)
       actionmailer
       actionpack
@@ -397,6 +398,7 @@ DEPENDENCIES
   rack-rewrite
   rails (= 4.1.9)
   rails_12factor
+  rubyzip
   runtimeerror_notifier
   sass-rails (~> 4.0.5)
   sdoc (~> 0.4.0)
