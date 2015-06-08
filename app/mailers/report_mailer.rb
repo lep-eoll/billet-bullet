@@ -4,7 +4,7 @@ class ReportMailer < ActionMailer::Base
 
   def daily_report(report_zip_filename)
     attachments[report_zip_filename] = File.read(report_zip_filename)
-    mail(to: ADMINS, subject: "LEP Sales Reports #{Time.current.strftime('%a %b %d')}")
+    mail(to: ADMINS, subject: "LEP Sales Reports #{Time.current.strftime('%a %b %d')}").deliver
   end
 
 end

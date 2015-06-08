@@ -19,7 +19,7 @@ namespace :reports do
 
   desc "Generate all the reports and send them via email"
   task :all_reports_zipped => :environment do
-    Dir["*.xls"].each {|filename| File.delete filename }
+    Dir["*.zip","*.xls"].each {|filename| File.delete filename }
     Reporter.new.product_report
     Reporter.new.customer_order_report
     Reporter.new.date_order_report 14
