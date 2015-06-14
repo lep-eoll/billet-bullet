@@ -96,12 +96,16 @@ class Reporter
 
   def process_product(product)
     product_rows = [[product.name]]
-    product.line_items.group_by { |li| li.variant_id }.each do |variant_array|
+    product.line_items.
+      includes(:order).
+      reject {|li| li.order.state != 'complete'}.
+      group_by { |li| li.variant_id }.
+      each do |variant_array|
       variant = Spree::Variant.find variant_array[0]
       variant_line_items = variant_array[1]
       # puts "Variant '#{variant.sku}' Total sold : #{variant_line_items.size}"
       product_rows << ['', "#{variant.sku} total",'', variant_line_items.size, '', 'price sold at', 'number tix']
-      costs = variant_line_items.group_by { |li| li.price }.sort.each do |priced_variants|
+      variant_line_items.group_by { |li| li.price }.sort.each do |priced_variants|
         product_rows << ['','','', '','', "$#{priced_variants[0]}", priced_variants[1].size]
         # puts "sold at $#{priced_variants[0]}' Total sold : #{priced_variants[1].size}"
       end
