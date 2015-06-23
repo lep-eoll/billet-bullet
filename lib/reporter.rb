@@ -96,6 +96,7 @@ class Reporter
 
   def process_product(product)
     product_rows = [[product.name]]
+    total_admission = 0
     product.line_items.
       includes(:order).
       reject {|li| li.order.state != 'complete'}.
@@ -103,13 +104,41 @@ class Reporter
       each do |variant_array|
         variant = Spree::Variant.find variant_array[0]
         variant_line_items = variant_array[1]
-        product_rows << ['', "#{variant.sku} total",'', variant_line_items.size, '', 'price sold at', 'number tix']
+        variant_quantity = variant_line_items.inject(0) {|sum, li| sum + li.quantity}
+        total_admission += variant_quantity
+
+        product_rows << ['', "#{variant.sku} total",'', variant_quantity, '', 'price sold at', 'number tix']
         variant_line_items.group_by { |li| li.price }.sort.each do |priced_variants|
           product_rows << ['','','', '','', "$#{priced_variants[0]}", priced_variants[1].inject(0) {|sum, li| sum + li.quantity}]
         end
-        product_rows << ['']
       end
+      if is_goldcard_event?(product)
+          product_rows << ['','Gold Card Admissions','', num_gold_cards]
+          total_admission += num_gold_cards
+      end
+      product_rows << ['']
+      product_rows << ['', 'TOTAL ADMISSION', '', total_admission]
     product_rows
   end
 
+  def num_gold_cards
+    @num_gold_cards ||= Spree::Product.find(11).line_items.
+      includes(:order).
+      reject {|li| li.order.state != 'complete'}.
+      inject(0) {|sum, li| sum + li.quantity}
+  end
+
+  def is_goldcard_event?(product)
+    [
+       2, #Opening Gala
+       19, #Unistus Chamber Choir
+       20, #Youth guest performances
+       21, #Colours, Sounds & Traditions of Estonia
+       22, #National Opera of Estonia
+       4, #Song Festival
+       30, #Church Concert
+       32, #Folk Dance celebration
+       34 #Vanemuine Ballet Performance
+    ].include? product.id
+  end
 end
