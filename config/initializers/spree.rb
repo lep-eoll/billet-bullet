@@ -10,7 +10,7 @@
 Spree.config do |config|
   # Example:
   # Uncomment to stop tracking inventory levels in the application
-  # config.track_inventory_levels = false
+  config.track_inventory_levels = true
   Devise.secret_key = ENV['DEVISE_SECRET_KEY']
   config.products_per_page = 500
   config.logo = 'cropped-LEP2015-Banner-White-Web-525wide.png'
