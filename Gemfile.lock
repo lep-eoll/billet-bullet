@@ -8,7 +8,7 @@ GIT
 
 GIT
   remote: https://github.com/spree/spree.git
-  revision: b7a54df84e47045b31b6b3e184d60a18d8018585
+  revision: aed7dc44ad7e13dae431f9530a82e1b71e412fbd
   branch: 2-4-stable
   specs:
     spree (2.4.8.beta)
@@ -226,9 +226,9 @@ GEM
     mime-types (2.6.1)
     mini_portile (0.6.2)
     minitest (5.7.0)
-    monetize (1.3.0)
-      money (~> 6.5.0)
-    money (6.5.1)
+    monetize (1.3.1)
+      money (~> 6.6)
+    money (6.6.0)
       i18n (>= 0.6.4, <= 0.7.0)
     multi_json (1.11.2)
     multi_xml (0.5.5)
@@ -268,8 +268,7 @@ GEM
       slop (~> 3.4)
     pry-rails (0.3.4)
       pry (>= 0.9.10)
-    puma (2.11.3)
-      rack (>= 1.1, < 2.0)
+    puma (2.12.1)
     rabl (0.9.4.pre1)
       activesupport (>= 2.3.14)
     rack (1.5.5)
