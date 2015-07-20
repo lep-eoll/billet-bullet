@@ -87,9 +87,10 @@ class Reporter
 
   def process_order(order)
     order_rows = [[ "#{order.billing_address.last_name.titleize}, #{order.billing_address.first_name.titleize}","##{order.number}"]]
-    order_rows << [order.email, order.created_at.strftime('%y %m %d'), "#{order.billing_address.try(:city)} #{order.billing_address.try(:state).try(:abbr)}, #{order.billing_address.try(:country)}" ]
+    order_rows << [order.email,  "#{order.billing_address.try(:city)} #{order.billing_address.try(:state).try(:abbr)}, #{order.billing_address.try(:country)}" ]
+    order_rows << [order.created_at.strftime('%y %m %d')]
     order.line_items.each do |line_item|
-      order_rows << ['',line_item.product.name, line_item.sku, line_item.quantity, "$#{line_item.price}" ]
+      order_rows << ['', line_item.sku, line_item.quantity, "$#{line_item.price}" ]
     end
     order_rows
   end
