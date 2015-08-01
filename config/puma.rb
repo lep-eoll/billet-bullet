@@ -1,7 +1,7 @@
 #https://devcenter.heroku.com/articles/deploying-rails-applications-with-the-puma-web-server
 
 workers Integer(ENV['PUMA_WORKERS'] || 1)
-threads Integer(ENV['MIN_THREADS']  || 2), Integer(ENV['MAX_THREADS'] || 8)
+threads Integer(ENV['MIN_THREADS']  || 6), Integer(ENV['MAX_THREADS'] || 6)
 
 preload_app!
 
