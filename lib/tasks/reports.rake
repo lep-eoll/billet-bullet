@@ -36,7 +36,6 @@ namespace :reports do
       end
     end
 
-    #ReportMailer.daily_report(zipfile_name)
-
+    ReportMailer.daily_report(zipfile_name)
   end
 end
