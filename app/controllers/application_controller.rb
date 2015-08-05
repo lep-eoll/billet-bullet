@@ -13,4 +13,12 @@ class ApplicationController < ActionController::Base
     #end
   #end
 
+    rescue_from Exception, :with => :not_available
+
+private
+
+  def render_404
+    render :template => 'pages/show', :layout => false, :status => :not_found
+  end
+
 end
